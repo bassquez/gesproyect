@@ -2,6 +2,10 @@
   "name": "gesproyect",
   "version": "1.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "1.4.29"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
