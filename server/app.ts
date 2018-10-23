@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 let mongodbURI;
-if (process.env.NODE_ENV === 'test') {
+if (process.env. === 'test') {
   mongodbURI = process.env.MONGODB_TEST_URI;
 } else {
   mongodbURI = process.env.MONGODB_URI;
