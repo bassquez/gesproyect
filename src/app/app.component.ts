@@ -41,7 +41,6 @@ export class AppComponent implements OnInit, OnDestroy {
   envName = env.envName;
   version = env.versions.app;
   year = new Date().getFullYear();
-  logo = require('../assets/logoW.png');
 
   isAuthenticated;
   private _mobileQueryListener: () => void;
