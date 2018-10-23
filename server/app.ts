@@ -7,7 +7,7 @@ import setRoutes from './routes';
 
 const app = express();
 dotenv.load({ path: '.env' });
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 8080));
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(express.json());
