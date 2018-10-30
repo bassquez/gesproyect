@@ -5,10 +5,12 @@ import * as mongoose from 'mongoose';
 import * as path from 'path';
 import setRoutes from './routes';
 
-const PORT = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 const app = express();
 dotenv.load({ path: '.env' });
+app.set('port', port);
+
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(express.json());
@@ -34,7 +36,7 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true })
     });
 
     if (!module.parent) {
-      app.listen(PORT, () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
+      app.listen(app.get('port'), '0.0.0.0', () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
     }
   })
   .catch(err => console.error(err));
