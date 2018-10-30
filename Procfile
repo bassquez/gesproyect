@@ -1,1 +1,1 @@
-web: ng build --aot --prod && tsc -p server && node dist/server/app.js
+worker: ng build --aot --prod && tsc -p server && node dist/server/app.js
