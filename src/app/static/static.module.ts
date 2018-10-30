@@ -11,7 +11,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 @NgModule({
   imports: [SharedModule, StaticRoutingModule],
   declarations: [AboutComponent, FeaturesComponent, LoginComponent, SidebarComponent],
-  exports:[
+  exports: [
     SidebarComponent
   ]
 })

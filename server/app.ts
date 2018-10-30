@@ -5,16 +5,18 @@ import * as mongoose from 'mongoose';
 import * as path from 'path';
 import setRoutes from './routes';
 
+const port = process.env.PORT || 8080;
+
 const app = express();
 dotenv.load({ path: '.env' });
-app.set('port', (process.env.PORT || 8080));
+app.set('port', port);
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 let mongodbURI;
-if (process.env. === 'test') {
+if (process.env.NODE_ENV === 'test') {
   mongodbURI = process.env.MONGODB_TEST_URI;
 } else {
   mongodbURI = process.env.MONGODB_URI;
