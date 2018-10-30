@@ -5,11 +5,10 @@ import * as mongoose from 'mongoose';
 import * as path from 'path';
 import setRoutes from './routes';
 
-const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 dotenv.load({ path: '.env' });
-app.set('port', port);
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(express.json());
@@ -30,12 +29,13 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true })
 
     setRoutes(app);
 
-    app.get('/*', function (req, res) {
+    app.get('/*', function(req, res) {
       res.sendFile(path.join(__dirname, '../public/index.html'));
     });
 
-    app.listen(app.get('port'), () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
-
+    if (!module.parent) {
+      app.listen(PORT, () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
+    }
   })
   .catch(err => console.error(err));
 
