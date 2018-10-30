@@ -31,7 +31,7 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true })
     setRoutes(app);
 
     app.get('/*', function(req, res) {
-      res.sendFile(path.join(__dirname, '../public/index.html'));
+      res.sendFile(path.join(__dirname, '../index.html'));
     });
 
     if (!module.parent) {
