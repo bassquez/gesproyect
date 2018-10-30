@@ -30,13 +30,12 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true })
 
     setRoutes(app);
 
-    app.get('/*', function(req, res) {
+    app.get('/*', function (req, res) {
       res.sendFile(path.join(__dirname, '../public/index.html'));
     });
 
-    if (!module.parent) {
-      app.listen(app.get('port'), () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
-    }
+    app.listen(app.get('port'), () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
+
   })
   .catch(err => console.error(err));
 
