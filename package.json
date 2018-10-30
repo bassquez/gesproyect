@@ -11,7 +11,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng build --aot --prod && node dist/server/app.js",
+    "start": "ng build --aot --prod && tsc -p server && node dist/server/app.js",
     "build": "ng build && tsc -p server",
     "watch": "ng test --configuration=test --browsers ChromeHeadless --watch",
     "build:prod": "ng build --prod --build-optimizer --vendor-chunk --common-chunk",
