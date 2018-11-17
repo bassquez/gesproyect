@@ -6,7 +6,7 @@
     </div>
     <div class="container">
       <div class="row justify-content-around">
-        <mat-form-field color="accent" class="col-5" appearance="fill">
+        <mat-form-field color="accent" class="col col-md-5 " appearance="fill">
           <input matInput [matAutocomplete]="auto" [(ngModel)]="sProyecto" placeholder="Busca Aqui" (keyup)="search($event)" class="search-input"
           />
           <mat-autocomplete #auto="matAutocomplete">
@@ -18,7 +18,7 @@
       </div>
 
       <div class="row justify-content-around">
-        <div class="col margen1" *ngFor="let proyecto of proyectos">
+        <div class="col-12 col-md margen1" *ngFor="let proyecto of proyectos">
           <mat-card>
             <mat-card-header>
               <mat-card-title>

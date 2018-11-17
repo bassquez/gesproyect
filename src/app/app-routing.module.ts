@@ -4,12 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { SettingsComponent } from './settings';
 import { AuthGuardAdminService } from './core/auth/auth-guard-admin.service';
 import { AuthGuardLoginService } from './core/auth/auth-guard-login.service';
+import { AboutComponent, LoginComponent } from './static';
+import { ImprimirComponent } from './static/imprimir/imprimir.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'about',
     pathMatch: 'full',
   },
   {
@@ -20,6 +22,13 @@ const routes: Routes = [
     }
   },
   {
+    path: 'about',
+    component: AboutComponent,
+    data: {
+      title: 'Home'
+    }
+  },
+  {
     path: 'admin',
     loadChildren: 'app/admin/admin.module#AdminModule'
   },
@@ -27,10 +36,10 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
   },
-/*   {
+   {
     path: '**',
     redirectTo: 'about'
-  } */
+  }
 ];
 
 @NgModule({

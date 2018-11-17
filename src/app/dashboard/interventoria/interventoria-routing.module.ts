@@ -4,6 +4,7 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
 import { InterventoriaComponent } from './interventoria/interventoria.component';
 import { InterventoriasComponent } from './interventorias/interventorias.component';
 import { RootComponent } from './root/root.component';
+import { AuthGuardLoginService } from '../../core/auth/auth-guard-login.service';
 
 const routes: Routes = [{
   path: '',
@@ -19,21 +20,26 @@ const routes: Routes = [{
       component: ProyectoComponent,
       data: {
         title: 'Interventorias'
-      }
+      },
+      canActivate: [AuthGuardLoginService]
+
     },
     {
       path: 'interventoria/:id',
       component: InterventoriaComponent,
       data: {
         title: 'Registrar Interventoria'
-      }
+      },
+      canActivate: [AuthGuardLoginService]
+
     },
     {
       path: 'interventorias/:id',
       component: InterventoriasComponent,
       data: {
         title: 'Ver Interventorias'
-      }
+      }      ,
+      canActivate: [AuthGuardLoginService]
     }
   ]
 }];

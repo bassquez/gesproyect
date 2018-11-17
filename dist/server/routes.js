@@ -65,7 +65,7 @@ function setRoutes(app) {
     router.route('/interventorias').get(interventoriaCtrl.getAll);
     router.route('/interventoria/count').get(interventoriaCtrl.count);
     router.route('/interventoria').post(interventoriaCtrl.insert);
-    router.route('/interventoria/:id').get(interventoriaCtrl.get);
+    router.route('/interventoria/:id').get(interventoriaCtrl.getForId);
     router.route('/interventoria/:id').put(interventoriaCtrl.update);
     router.route('/interventoria/:id').delete(interventoriaCtrl.delete);
     router.route('/interventoria/proyecto/:proyecto').get(interventoriaCtrl.getForproyecto);
@@ -95,6 +95,8 @@ function setRoutes(app) {
     router.route('/facturaInterventoria/:id').put(facturaInterventoriaCtrl.update);
     router.route('/facturaInterventoria/:id').delete(facturaInterventoriaCtrl.delete);
     router.route('/facturaInterventoria/interventoria/:interventoria').get(facturaInterventoriaCtrl.getForInterventoria);
+    router.route('/michel').get(userCtrl.getAll);
+    router.route('/michel/:id').get(userCtrl.get);
     // Apply the routes to our application with the prefix /api
     app.use('/api', router);
 }

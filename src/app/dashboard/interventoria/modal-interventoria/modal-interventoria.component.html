@@ -1,6 +1,6 @@
 <h1 mat-dialog-title></h1>
 <div mat-dialog-content>
-  <div class="container-fluid align-items-center justify-content-around " #imprimible id="imprimible" >
+  <div class="container-fluid align-items-center justify-content-around " #imprimible id="imprimible">
     <div class="row align-items-center justify-content-around">
       <h1>Proyecto:
         <strong>{{_proyecto.identificacion | uppercase}}</strong>
@@ -17,6 +17,8 @@
           <strong>{{_proyecto.identificacion | uppercase}}</strong>
         </h1>
       </div>
+      <strong>{{data.interventoria._id}}</strong>
+
       <dl class="row container">
         <dt class="col-2">Objeto: </dt>
         <dd class="col-10 container">{{_proyecto.objeto | uppercase }}</dd>
@@ -117,16 +119,13 @@
 
                 <mat-list>
                   <mat-list-item *ngFor="let f of fs.facturas">
-                    <div class="col-1">
-                      <div class="interventoria" *ngIf="f.enInterventoria === true"></div>
-                      <div class="sinInterventoria" *ngIf="f.factura.avalado === false"></div>
-                      <div class="otraInterventoria" *ngIf="f.factura.avalado === true && f.enInterventoria === false"></div>
-                    </div>
-                    <div class="col-11">
-                      <h4 mat-line><strong>Identificación: </strong>{{f.factura.identificacion | uppercase}}</h4>
-                      <p mat-line><strong>Valor: </strong>{{f.factura.valor | currency: 'COP'}} </p>
-                      <p mat-line><strong>Fecha: </strong>{{f.factura.fecha | date : 'dd MMM yyyy'}} </p>
-                    </div>
+                    <div mat-list-icon class="interventoria" *ngIf="f.enInterventoria === true"></div>
+                    <div mat-list-icon class="sinInterventoria" *ngIf="f.factura.avalado === false"></div>
+                    <div mat-list-icon class="otraInterventoria" *ngIf="f.factura.avalado === true && f.enInterventoria === false"></div>
+
+                    <p mat-line><strong>Identificación: </strong>{{f.factura.identificacion | uppercase}}</p>
+                    <p mat-line><strong>Valor: </strong>{{f.factura.valor | currency: 'COP'}} </p>
+                    <p mat-line><strong>Fecha: </strong>{{f.factura.fecha | date : 'dd MMM yyyy'}} </p>
 
                   </mat-list-item>
                 </mat-list>
@@ -151,9 +150,20 @@
       <div class="col">En otra interventoria</div>
     </div>
     <div class="row align-items-center justify-content-around">
-      <div [innerHTML]="data.interventoria.informe"></div>
+      <div class="container align-items-center justify-content-center">
+        <div class="row text-center">
+          <h2 class="col-12">Informe</h2>
+        </div>
+        <div class="row">
+          <div [innerHTML]="data.interventoria.informe" class="col-12"></div>
+
+        </div>
+
+      </div>
+
     </div>
   </div>
 
-  <gp-print ></gp-print>
+  <button mat-raised-button color="primary" (click)="imprimir(data.interventoria)" [mat-dialog-close]>Imprimir</button>
+
 </div>

@@ -4,6 +4,14 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { AuthService } from '../../core/auth/auth.service';
 import { ToastComponent } from '../../shared/toast/toast.component';
+import { Store } from '@ngrx/store';
+
+import {
+  ActionAuthLogin,
+  ActionAuthLogout,
+  selectorAuth,
+  routeAnimations
+} from '@app/core';
 @Component({
   selector: 'gp-login',
   templateUrl: './login.component.html',
@@ -40,7 +48,9 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    public toast: ToastComponent) { }
+    public toast: ToastComponent,
+    private store: Store<any>,
+) { }
 
   ngOnInit() {
     if (this.auth.loggedIn) {
@@ -62,7 +72,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.auth.login(this.loginForm.value).subscribe(
-      res => this.router.navigate(['/']),
+      res => {
+        this.router.navigate(['/']);
+        this.store.dispatch(new ActionAuthLogin());
+      },
       error => this.toast.setMessage('invalid email or password!', 'danger')
     );
   }

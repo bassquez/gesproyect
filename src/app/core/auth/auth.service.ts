@@ -8,6 +8,8 @@ import { UserService } from '../services/user.service';
 
 
 import 'rxjs/add/operator/map';
+import { now } from 'moment';
+import { Store } from '@ngrx/store';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,8 @@ export class AuthService {
 
   constructor(private userService: UserService,
               private router: Router,
-              private jwtHelper: JwtHelperService) {
+              private jwtHelper: JwtHelperService,
+              private store: Store<any>) {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
@@ -44,7 +47,8 @@ export class AuthService {
     this.loggedIn = false;
     this.isAdmin = false;
     this.currentUser = new User();
-    this.router.navigate(['login']);
+    this.router.navigate(['/about']);
+    location.reload();
   }
 
   decodeUserFromToken(token) {

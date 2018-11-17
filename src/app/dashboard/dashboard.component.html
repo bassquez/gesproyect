@@ -1,12 +1,12 @@
 <div class="container">
     <div class="row justify-content-around">
-        <div class="col-3 dash" *ngFor="let i of navigationDashboard">
+        <div class="col-lg-3 col-md-6 col-sm-12 dash" *ngFor="let i of navigationDashboard">
             <mat-card>
                 <mat-card-header>
                     <div mat-card-avatar><mat-icon>{{i.icon}}</mat-icon></div>
                     <mat-card-title>{{i.label}}</mat-card-title>
                 </mat-card-header>
-                <button class="btn-dash" mat-flat-button [routerLink]="i.link" routerLinkActive #rla="routerLinkActive">Ir a {{i.label}}</button>
+                <button class="btn-dash" color="accent" mat-flat-button [routerLink]="i.link" routerLinkActive #rla="routerLinkActive">Ir a {{i.label}}</button>
             </mat-card>
         </div>
     </div>

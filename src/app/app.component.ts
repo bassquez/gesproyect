@@ -25,6 +25,8 @@ import {
 } from './settings';
 import { AuthService } from './core/auth/auth.service';
 import { AnimationsService } from './core';
+import { ImprimirService } from './core/services/imprimir.service';
+
 
 @Component({
   selector: 'gp-root',
@@ -52,18 +54,15 @@ export class AppComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private animationService: AnimationsService,
     public auth: AuthService,
-    changeDetectorRef: ChangeDetectorRef, media: MediaMatcher
+    changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
+    public _imprimir: ImprimirService
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(max-width: 10px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
    }
 
 
-  private static trackPageView(event: NavigationEnd) {
-    (<any>window).ga('set', 'page', event.urlAfterRedirects);
-    (<any>window).ga('send', 'pageview');
-  }
 
   private static isIEorEdge() {
     return ['ie', 'edge'].includes(browser().name);
@@ -88,6 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onLogoutClick() {
     this.auth.logout();
+    this.store.dispatch(new ActionAuthLogout());
   }
 
   private subscribeToIsAuthenticated() {
@@ -149,9 +149,6 @@ export class AppComponent implements OnInit, OnDestroy {
           this.setPageTitle(event);
         }
 
-        if (event instanceof NavigationEnd) {
-          AppComponent.trackPageView(event);
-        }
       });
   }
 

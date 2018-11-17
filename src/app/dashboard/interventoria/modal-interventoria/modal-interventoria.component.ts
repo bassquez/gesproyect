@@ -11,6 +11,8 @@ import { Factura } from '../../../core/models/factura.model';
 import { FacturaService } from '../../../core/services/factura.service';
 import { FacturaInterventoriaService } from '../../../core/services/facturaInterventoria.service';
 import { FacturaInterventoria } from '../../../core/models/facturaInterventoria.model';
+import { Router } from '@angular/router';
+import { ImprimirService } from '../../../core/services/imprimir.service';
 
 
 @Component({
@@ -71,11 +73,12 @@ export class ModalInterventoriaComponent implements OnInit {
     public dialogRef: MatDialogRef<ModalInterventoriaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public interventoriaService: InterventoriaService,
-
+    public router: Router,
     public fuenteFinanaciacionProyectoService: FuenteFinanciacionProyectoService,
     public proyectoService: ProyectoService,
     public facturaService: FacturaService,
-    public facturaInterventoriaService: FacturaInterventoriaService
+    public facturaInterventoriaService: FacturaInterventoriaService,
+    public _imprimir: ImprimirService
   ) { }
 
   ngOnInit() {
@@ -197,14 +200,14 @@ export class ModalInterventoriaComponent implements OnInit {
   }
   getFacturaInterventoria() {
     this.facturaInterventoriaService.getFacturaInterventoria(this.data.interventoria._id).subscribe(
-      data => this.facturasPorInterventoria = data,
-      error => console.log(error),
-      () => {
+      data => {
+        this.facturasPorInterventoria = data;
         this.facturaValor = 0;
         for (let index = 0; index < this.facturasPorInterventoria.length; index++) {
           this.facturaValor = this.facturaValor + this.facturasPorInterventoria[index].factura.valor;
         }
-      }
+      },
+      error => console.log(error)
     );
   }
   getProyectoContratista() {
@@ -215,6 +218,11 @@ export class ModalInterventoriaComponent implements OnInit {
     );
   }
 
+  imprimir(interventoria: Interventoria) {
+    this._imprimir.toggleImprimir();
+    this.router.navigate(['/imprimir/' + interventoria._id]);
+
+  }
 
   facturasPorFuete() {
 

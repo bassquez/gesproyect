@@ -5,21 +5,21 @@ import * as mongoose from 'mongoose';
 import * as path from 'path';
 import setRoutes from './routes';
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 dotenv.load({ path: '.env' });
 
 
-app.use('/', express.static(path.join(__dirname, '../dist')));
+app.use('/', express.static(path.join(__dirname, '../')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 let mongodbURI;
-if (process.env.NODE_ENV === 'test') {
-  mongodbURI = process.env.MONGODB_TEST_URI;
-} else {
+if (process.env.NODE_ENV === 'prod') {
   mongodbURI = process.env.MONGODB_URI;
+} else {
+  mongodbURI = process.env.MONGODB_DEV_URI;
   app.use(morgan('dev'));
 }
 
@@ -35,7 +35,7 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true })
     });
 
     if (!module.parent) {
-      app.listen(PORT, () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
+      app.listen(PORT, () => console.log(`Angular Full Stack listening on port ${PORT}`));
     }
   })
   .catch(err => console.error(err));

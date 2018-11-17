@@ -26,6 +26,15 @@ var InterventoriaCtrl = /** @class */ (function (_super) {
             })
                 .populate('proyecto');
         };
+        _this.getForId = function (req, res) {
+            _this.model.findOne({ _id: req.params.id }, function (err, item) {
+                if (err) {
+                    return console.error(err);
+                }
+                res.status(200).json(item);
+            })
+                .populate('proyecto');
+        };
         return _this;
     }
     return InterventoriaCtrl;

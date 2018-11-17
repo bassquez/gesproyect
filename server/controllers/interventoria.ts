@@ -12,4 +12,13 @@ export default class InterventoriaCtrl extends BaseCtrl {
         .populate('proyecto');
       }
 
+      getForId = (req, res) => {
+        this.model.findOne({ _id: req.params.id }, (err, item) => {
+          if (err) { return console.error(err); }
+          res.status(200).json(item);
+        })
+        .populate('proyecto');
+      }
+
+
 }

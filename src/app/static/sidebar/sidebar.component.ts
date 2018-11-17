@@ -21,6 +21,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.navigation = [
+      { link: 'about', label: 'Inicio', icon: 'home', auth: true },
       { link: 'dashboard', label: 'Tablero de trabajo', icon: 'dashboard', auth: true },
       { link: 'admin', label: 'Administrador', icon: 'supervisor_account', auth:  this.auth.isAdmin}
     ];

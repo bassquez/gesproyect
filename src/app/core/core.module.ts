@@ -25,6 +25,7 @@ import { FuenteFinanciacionService } from './services/fuenteFinanciacion.service
 import { FuenteFinanciacionProyectoService } from './services/fuenteFinanciacionProyecto.service';
 
 import { JwtModule } from '@auth0/angular-jwt';
+import { ImprimirService } from './services/imprimir.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -65,8 +66,8 @@ if (!environment.production) {
   ],
   declarations: [],
   providers: [
-    LocalStorageService, 
-    AuthGuardService, 
+    LocalStorageService,
+    AuthGuardService,
     AnimationsService,
     AuthService,
     AuthGuardAdminService,
@@ -76,7 +77,8 @@ if (!environment.production) {
     UserService,
     ProyectoService,
     FuenteFinanciacionService,
-    FuenteFinanciacionProyectoService
+    FuenteFinanciacionProyectoService,
+    ImprimirService
   ]
 })
 export class CoreModule {

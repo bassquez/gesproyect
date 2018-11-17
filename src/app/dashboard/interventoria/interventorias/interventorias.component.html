@@ -5,16 +5,23 @@
     <div class="col justify-content-around text-center margen1">
       <h1><strong>Proyecto: {{_proyecto.identificacion | uppercase}}</strong></h1>
       <h2>Interventor: {{_proyecto.interventor.nombre + ' ' + _proyecto.interventor.apellido | uppercase }}</h2>
+      <mat-card class="info" *ngIf="auth.currentUser?.identificacion !== _proyecto.interventor?.identificacion">
+        <h3>No eres el Interventor, si no se ven interventorias es por que no se han agregado.
+
+        </h3>
+      </mat-card>
+
     </div>
   </div>
   <div class="row justify-content-around container" *ngIf="!isEditing">
-    <button mat-stroked-button *ngIf="auth.currentUser.identificacion === _proyecto.interventor.identificacion " (click)="interventoria(_proyecto)">Agregar
+    <button mat-stroked-button *ngIf="auth.currentUser.identificacion === _proyecto.interventor.identificacion "
+      (click)="interventoria(_proyecto)">Agregar
       Informe
       <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
     </button>
   </div>
   <div class="row justify-content-around" *ngIf="!isEditing">
-    <div class="col-4 text-truncate margen1" *ngFor="let interventoria of interventorias">
+    <div class="col-sm text-truncate margen1" *ngFor="let interventoria of interventorias">
       <mat-card>
         <mat-card-header>
           <mat-card-title><strong>
@@ -40,6 +47,7 @@
           <button mat-raised-button (click)="openDialogDetalle(interventoria)">Ver</button>
           <button mat-raised-button color="warn" (click)="borrarInterventoria(interventoria)">Eliminar</button>
           <button mat-raised-button color="primary" (click)="enableEditing(interventoria)">Editar</button>
+          <button mat-raised-button color="accent" (click)="imprimir(interventoria)">Imprimir</button>
 
         </mat-card-actions>
       </mat-card>
@@ -151,8 +159,8 @@
 
           <div class="row justify-content-center align-items-center">
             <div class="col-12">
-              <textarea [froalaEditor]="optionsEditor" [(ngModel)]="_interventoria.informe" formControlName="informe"></textarea>
-
+                
+                <angular-editor  formControlName="informe" [(ngModel)]="_interventoria.informe"></angular-editor>
             </div>
           </div>
 

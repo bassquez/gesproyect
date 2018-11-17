@@ -7,12 +7,14 @@ import { SharedModule } from '../shared';
 import { settingsReducer } from './settings.reducer';
 import { SettingsEffects } from './settings.effects';
 import { SettingsComponent } from './settings/settings.component';
+import { SettingsRoutingModule } from './settings-routing.module';
 
 @NgModule({
   imports: [
     SharedModule,
     StoreModule.forFeature('settings', settingsReducer),
-    EffectsModule.forFeature([SettingsEffects])
+    EffectsModule.forFeature([SettingsEffects]),
+    SettingsRoutingModule
   ],
   declarations: [SettingsComponent]
 })

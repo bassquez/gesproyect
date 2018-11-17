@@ -72,7 +72,7 @@ export class AddContratistaComponent implements OnInit {
     this.contratistaService.addContratista(this.contratistaForm.value).subscribe(
       res => {
         this.toast.setMessage('Fuente de financiación agregada exitosamente!', 'success');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard/contratista/admin-contratista']);
       },
       error => this.toast.setMessage('No se agregó', 'danger')
     );

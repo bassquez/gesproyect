@@ -1,6 +1,109 @@
-$gp-black-primary: mat-palette($mat-grey, 700, 300, 900);
-$gp-black-accent: mat-palette($mat-amber, A200, A100, A400);
-$gp-black-warn: mat-palette($mat-red, 500);
+@import '~@angular/material/theming';
+@include mat-core(); 
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette0: (
+    50 : #eaeaea,
+    100 : #cccccc,
+    200 : #aaaaaa,
+    300 : #878787,
+    400 : #6e6e6e,
+    500 : #545454,
+    600 : #4d4d4d,
+    700 : #434343,
+    800 : #3a3a3a,
+    900 : #292929,
+    A100 : #f28888,
+    A200 : #ed5a5a,
+    A400 : #ff1414,
+    A700 : #fa0000,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-mcgpalette1: (
+    50 : #edf5ee,
+    100 : #d3e6d6,
+    200 : #b5d5ba,
+    300 : #97c49e,
+    400 : #81b78a,
+    500 : #6baa75,
+    600 : #63a36d,
+    700 : #589962,
+    800 : #4e9058,
+    900 : #3c7f45,
+    A100 : #d2ffd8,
+    A200 : #9fffab,
+    A400 : #6cff7f,
+    A700 : #52ff69,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-mcgpalette2: (
+    50 : #fbeae9,
+    100 : #f4cbc9,
+    200 : #eda8a5,
+    300 : #e68580,
+    400 : #e06a65,
+    500 : #db504a,
+    600 : #d74943,
+    700 : #d2403a,
+    800 : #cd3732,
+    900 : #c42722,
+    A100 : #fffefe,
+    A200 : #ffcccb,
+    A400 : #ff9b98,
+    A700 : #ff827f,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$gp-black-primary: mat-palette($md-mcgpalette0, 700, 300, 900);
+$gp-black-accent: mat-palette($md-mcgpalette1, 500, 200, 600);
+$gp-black-warn: mat-palette($md-mcgpalette2, 500);
 
 $gp-black-theme: mat-dark-theme(
   $gp-black-primary,

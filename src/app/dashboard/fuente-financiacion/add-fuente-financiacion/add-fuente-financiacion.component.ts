@@ -83,7 +83,7 @@ export class AddFuenteFinanciacionComponent implements OnInit {
     this.ffService.addFuenteFinanciacion(this.ffForm.value).subscribe(
       res => {
         this.toast.setMessage('Fuente de financiación agregada exitosamente!', 'success');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard/fuente-financiacion/admin-fuente-financiacion']);
       },
       error => this.toast.setMessage('No se agregó', 'danger')
     );

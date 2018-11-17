@@ -1,13 +1,20 @@
-<mat-toolbar *ngIf="router.url != '/dashboard/home'" color="accent">
-  <div class="row  justify-content-around">
-    <div class="col">
+<mat-toolbar *ngIf="router.url != '/dashboard/home'" color="accent" class="justify-content-center container-fluid" >
+  <div class="row  justify-content-center container-fluid">
+    <div class="col-1 d-none d-sm-flex">
       <button mat-icon-button>
         <mat-icon (click)="goToHome()">home</mat-icon>
       </button>
     </div>
-    <div class="col" *ngFor="let i of navigationDashboard">
-      <button mat-button matLine  [routerLink]="i.link" routerLinkActive #rla="routerLinkActive"><mat-icon> {{i.icon}} </mat-icon>{{i.label}}</button>
+    <div class="col col-md-2 d-none d-sm-none d-md-flex" *ngFor="let i of navigationDashboard">
+      <button mat-button matLine [routerLink]="i.link" routerLinkActive #rla="routerLinkActive">
+        <mat-icon> {{i.icon}} </mat-icon>{{i.label}}
+      </button>
     </div>
+    <div class="col-1 d-flex d-sm-flex d-md-none container-fluid" *ngFor="let i of navigationDashboard">
+        <button mat-button matLine [routerLink]="i.link" routerLinkActive #rla="routerLinkActive">
+          <mat-icon> {{i.icon}} </mat-icon>
+        </button>
+      </div>
   </div>
 </mat-toolbar>
 <div [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">

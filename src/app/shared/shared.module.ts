@@ -56,9 +56,9 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { ToastComponent } from './toast/toast.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import 'froala-editor/js/froala_editor.pkgd.min.js';
 import { PrintComponent } from './print/print.component';
+
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   imports: [
@@ -108,8 +108,7 @@ import { PrintComponent } from './print/print.component';
     MomentModule,
     TextMaskModule,
     // Specify as an import
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    AngularEditorModule
   ],
   declarations: [
     BigInputComponent,
@@ -167,15 +166,12 @@ import { PrintComponent } from './print/print.component';
     MomentModule,
     TextMaskModule,
     ProgressBarComponent,
-    FroalaEditorModule,
-    FroalaViewModule,
-    PrintComponent
+    PrintComponent,
+    AngularEditorModule
   ],
   providers: [
     ToastComponent,
     { provide: MAT_DATE_LOCALE, useValue: 'es-CO' },
-    FroalaEditorModule,
-    FroalaViewModule,
     PrintComponent
 
   ]

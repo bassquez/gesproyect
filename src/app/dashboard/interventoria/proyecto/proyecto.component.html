@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row justify-content-around">
-      <mat-form-field color="accent" class="col-5" appearance="fill">
+      <mat-form-field color="accent" class="col col-md-5" appearance="fill">
         <input matInput [matAutocomplete]="auto" [(ngModel)]="sProyecto" placeholder="Busca Aqui" (keyup)="search()" class="search-input" />
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let proyecto of proyectos " [value]="proyecto.identificacion">
@@ -10,7 +10,7 @@
       </mat-form-field>
     </div>
     <div class="row justify-content-around">
-      <div class="col-4">
+      <div class="col col-md-8">
         <mat-nav-list>
           <mat-list-item *ngFor="let proyecto of proyectos" (click)="interventoria(proyecto)">
             <mat-icon class="lista" mat-list-icon>assessment</mat-icon>

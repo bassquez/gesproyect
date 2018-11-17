@@ -1,6 +1,109 @@
-$gp-nature-primary: mat-palette($mat-lime, A400, 200, 900);
-$gp-nature-accent: mat-palette($mat-indigo, 900, A100, A400);
-$gp-nature-warn: mat-palette($mat-red, 600);
+@import '~@angular/material/theming';
+@include mat-core(); 
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette0: (
+    50 : #e1e3e5,
+    100 : #b3b9be,
+    200 : #808b93,
+    300 : #4d5c68,
+    400 : #273947,
+    500 : #011627,
+    600 : #011323,
+    700 : #01101d,
+    800 : #010c17,
+    900 : #00060e,
+    A100 : #517aff,
+    A200 : #1e53ff,
+    A400 : #0037ea,
+    A700 : #0031d0,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-mcgpalette1: (
+    50 : #e6f8f6,
+    100 : #c0ede9,
+    200 : #97e2db,
+    300 : #6dd6cc,
+    400 : #4dcdc1,
+    500 : #2ec4b6,
+    600 : #29beaf,
+    700 : #23b6a6,
+    800 : #1daf9e,
+    900 : #12a28e,
+    A100 : #d3fff8,
+    A200 : #a0fff1,
+    A400 : #6dffe9,
+    A700 : #53ffe6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-mcgpalette2: (
+    50 : #ffe7ed,
+    100 : #ffc2d1,
+    200 : #ff99b3,
+    300 : #ff7094,
+    400 : #ff527d,
+    500 : #ff3366,
+    600 : #ff2e5e,
+    700 : #ff2753,
+    800 : #ff2049,
+    900 : #ff1438,
+    A100 : #ffffff,
+    A200 : #fffbfb,
+    A400 : #ffc8ce,
+    A700 : #ffaeb8,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$gp-nature-primary: mat-palette($md-mcgpalette0, 500, 500, 500);
+$gp-nature-accent: mat-palette($md-mcgpalette1, 500, 700, 600);
+$gp-nature-warn: mat-palette($md-mcgpalette2, 600);
 
 $gp-nature-theme: mat-light-theme(
   $gp-nature-primary,

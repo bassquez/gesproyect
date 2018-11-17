@@ -29,10 +29,9 @@
             <table class="table mat-elevation-z1">
               <thead class="">
                 <tr>
-                  <th scope="col" >
-                    <mat-checkbox (change)="$event ? masterToggle() : null"
-                                  [checked]="selection.hasValue() && isAllSelected()"
-                                  [indeterminate]="selection.hasValue() && !isAllSelected()">
+                  <th scope="col">
+                    <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
                     </mat-checkbox>
                   </th>
                   <th scope="col">Identificación</th>
@@ -44,9 +43,8 @@
               <tbody>
                 <tr scope="row" *ngFor="let factura of facturasPorProyecto">
                   <td>
-                    <mat-checkbox (click)="$event.stopPropagation()"
-                                  (change)="$event ? selection.toggle(factura) : null"
-                                  [checked]="selection.isSelected(factura)">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(factura) : null"
+                      [checked]="selection.isSelected(factura)">
                     </mat-checkbox>
                   </td>
                   <td>
@@ -64,12 +62,12 @@
             </table>
           </div>
 
-          
+
         </section>
       </div>
       <div class="row justify-content-center align-items-center">
         <div class="col-12">
-          <textarea [froalaEditor]="optionsEditor" formControlName="informe"></textarea>
+          <angular-editor formControlName="informe" [config]="editorConfig"></angular-editor>
 
         </div>
       </div>
@@ -82,6 +80,7 @@
 
 
 </mat-card>
+
 
 <mat-card class="col-12 col-md-8 container-fluid" *ngIf="auth.currentUser?.identificacion !== _proyecto.interventor?.identificacion">
   <mat-card-content>

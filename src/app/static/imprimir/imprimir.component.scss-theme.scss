@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+
+@mixin gp-imprimir-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  gp-imprimir {
+    background: white;
+    color: black;
+
+    .back {
+
+      background: white;
+      color: black;
+    }
+
+
+  }
+
+
+
+  .blanconegro {
+
+    background: white;
+    color: black;
+  }
+}

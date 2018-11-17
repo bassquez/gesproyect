@@ -21,6 +21,8 @@
 @import 'app/app.component.scss-theme';
 @import 'app/static/about/about.component.scss-theme';
 @import 'app/static/login/login.component.scss-theme';
+@import 'app/static/imprimir/imprimir.component.scss-theme';
+
 @import 'app/dashboard/dashboard.component.scss-theme';
 @import 'app/dashboard/interventoria/modal-interventoria/modal-interventoria.component.scss-theme';
 
@@ -31,6 +33,7 @@
   @include gp-login-component-theme($theme);
   @include gp-dashboard-component-theme($theme);
   @include gp-interventoria-component-theme($theme);
+  @include gp-imprimir-component-theme($theme);
 }
 
 .default-theme {

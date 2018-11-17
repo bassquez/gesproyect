@@ -4,10 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { FeaturesComponent } from './features/features.component';
 import { LoginComponent } from './login/login.component';
+import { ImprimirComponent } from './imprimir/imprimir.component';
 
 const routes: Routes = [
 
-  { path: 'about', component: AboutComponent, data: { title: 'About' } },
+  { path: 'about', component: AboutComponent, data: { title: 'Inicio' } },
   {
     path: 'features',
     component: FeaturesComponent,
@@ -17,6 +18,11 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     data: { title: 'Login' }
+  },
+  {
+    path: 'imprimir/:id',
+    component: ImprimirComponent,
+    data: { title: 'Imprimir' }
   }
 ];
 

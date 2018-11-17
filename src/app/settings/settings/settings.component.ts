@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+
 import {
   selectorSettings,
   ActionSettingsChangeTheme,
@@ -12,11 +13,16 @@ import {
   SettingsState,
   ActionSettingsPersist
 } from '../settings.reducer';
+import { Router } from '@angular/router';
+import { routeAnimations } from '../../core';
+import { AuthService } from '../../core/auth/auth.service';
+
 
 @Component({
   selector: 'gp-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
+  animations: [routeAnimations]
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
@@ -29,14 +35,17 @@ export class SettingsComponent implements OnInit, OnDestroy {
     { value: 'BLACK-THEME', label: 'Dark' }
   ];
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<any>,
+    public router: Router,
+    public auth: AuthService
+    ) {
     store
       .select(selectorSettings)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(settings => (this.settings = settings));
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();

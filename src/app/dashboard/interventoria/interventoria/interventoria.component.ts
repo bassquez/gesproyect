@@ -11,6 +11,7 @@ import { FacturaService } from '../../../core/services/factura.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FacturaInterventoriaService } from '../../../core/services/facturaInterventoria.service';
 import { FacturaInterventoria } from '../../../core/models/facturaInterventoria.model';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'gp-interventoria',
@@ -19,25 +20,31 @@ import { FacturaInterventoria } from '../../../core/models/facturaInterventoria.
 })
 export class InterventoriaComponent implements OnInit {
 
-  public optionsEditor: Object = {
-    placeholderText: 'Inicia el Informe haciendo clik acá',
-    charCounterCount: false,
-    language: 'es',
-    toolbarInline: false,
-    toolbarButtons: [
-      'bold',
-      'italic',
-      'underline',
-      'strikeThrough',
-      'undo',
-      'redo',
-      'paragraphFormat',
-      'align',
-      'formatOL',
-      'formatUL',
-      'indent',
-      'outdent']
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '25rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    uploadUrl: 'v1/images', // if needed
+    customClasses: [ // optional
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ]
   };
+
   interventorProyecto = false;
 
   interventoriaForm: FormGroup;

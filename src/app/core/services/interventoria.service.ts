@@ -24,6 +24,9 @@ export class InterventoriaService {
   getInterventoria(idProyecto): Observable<Interventoria[]> {
     return this.http.get<Interventoria[]>(`/api/interventoria/proyecto/${idProyecto}`);
   }
+  getInterventoriaId(_id): Observable<Interventoria> {
+    return this.http.get<Interventoria>(`/api/interventoria/${_id}`);
+  }
 
   editInterventoria(interventoria: Interventoria): Observable<any> {
     return this.http.put(`/api/interventoria/${interventoria._id}`, interventoria, { responseType: 'text' });

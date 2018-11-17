@@ -12,7 +12,7 @@
 
     width: 1em;
     height: 1em;
-    background: mat-color($primary);
+    background: mat-color($primary, darker);
     color: mat-color($primary,default-contrast);
     border-radius: 50%
   }

@@ -14,6 +14,8 @@ import { Factura } from '../../../core/models/factura.model';
 import { FacturaInterventoria } from '../../../core/models/facturaInterventoria.model';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FacturaService } from '../../../core/services/factura.service';
+import { ImprimirService } from '../../../core/services/imprimir.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 export interface DialogData {
   interventoria: Interventoria;
 }
@@ -41,25 +43,29 @@ export class InterventoriasComponent implements OnInit {
 
   _interventoria = new Interventoria;
 
-
-  public optionsEditor: Object = {
-    placeholderText: 'Inicia el Informe haciendo clik acá',
-    charCounterCount: false,
-    language: 'es',
-    toolbarInline: false,
-    toolbarButtons: [
-      'bold',
-      'italic',
-      'underline',
-      'strikeThrough',
-      'undo',
-      'redo',
-      'paragraphFormat',
-      'align',
-      'formatOL',
-      'formatUL',
-      'indent',
-      'outdent']
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '25rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    uploadUrl: 'v1/images', // if needed
+    customClasses: [ // optional
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ]
   };
 
   interventoriaForm: FormGroup;
@@ -87,6 +93,7 @@ export class InterventoriasComponent implements OnInit {
     public facturaInterventoriaService: FacturaInterventoriaService,
     public facturaService: FacturaService,
     private formBuilder: FormBuilder,
+    public _imprimir: ImprimirService
   ) { }
 
   ngOnInit() {
@@ -234,6 +241,12 @@ export class InterventoriasComponent implements OnInit {
 
   interventoria(proyecto) {
     this.router.navigate(['/dashboard/interventoria/interventoria/' + proyecto.identificacion]);
+
+  }
+
+  imprimir(interventoria: Interventoria) {
+    this._imprimir.toggleImprimir();
+    this.router.navigate(['/imprimir/' + interventoria._id]);
 
   }
 
